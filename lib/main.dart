@@ -63,30 +63,65 @@ class _MyAppState extends State<MyApp> {
               ) : condition == 'Drizzle' ? DecorationImage(
                   image: AssetImage("lib/assets/images/drizzle.jpg"), 
                   fit: BoxFit.cover
-              ) : null
+              ) : null,
+              color: Color.fromARGB(255, 44, 44, 44),
             ),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      child: FlareActor("lib/assets/images/worldspin.flr", fit: BoxFit.contain, animation: "roll"),
-                      height: 200,
-                      width: 300,
+    
+                    if (isLoading || _response == null) 
+                     Container(
+                      child: const FlareActor("lib/assets/images/spinworld.flr", fit: BoxFit.contain, animation: "roll"),
+                      height: 270,
+                      width: 270,
                     ),
-                    if (isLoading) 
-                      CircularProgressIndicator(
-                        backgroundColor: Color.fromARGB(255, 139, 162, 173),
-                        color: Color.fromARGB(255, 223, 223, 223),
-                        strokeWidth: 5,
-                      ),
                     if (_response != null && isLoading == false) 
                       Column(children: [
-                        Image.network(_response.iconUrl),
+                        if( condition == 'Clear') 
+                          Container(
+                            child: FlareActor("lib/assets/images/sunny.flr", fit: BoxFit.contain, animation: "01d"),
+                            height: 150,
+                            width: 150,
+                          ),
+                        if( condition == 'Clouds') 
+                          Container(
+                            child: FlareActor("lib/assets/images/allweather.flr", fit: BoxFit.contain, animation: "03d"),
+                            height: 150,
+                            width: 150,
+                          ),
+                        if( condition == 'Rain') 
+                          Container(
+                            child: FlareActor("lib/assets/images/allweather.flr", fit: BoxFit.contain, animation: "09d"),
+                            height: 150,
+                            width: 150,
+                          ),
+                        if( condition == 'Snow') 
+                          Container(
+                            child: FlareActor("lib/assets/images/allweather.flr", fit: BoxFit.contain, animation: "13d"),
+                            height: 150,
+                            width: 150,
+                          ),
+                        if( condition == 'Thunderstorm') 
+                          Container(
+                            child: FlareActor("lib/assets/images/allweather.flr", fit: BoxFit.contain, animation: "11d"),
+                            height: 150,
+                            width: 150,
+                          ),
+                        if( condition == 'Drizzle') 
+                          Container(
+                            child: FlareActor("lib/assets/images/allweather.flr", fit: BoxFit.contain, animation: "09d"),
+                            height: 150,
+                            width: 150,
+                          ),
+                        
+                       
+                    
                         
                         Text(
                           '${_response.temp.temp.ceil()}°C',
-                          style: TextStyle(fontSize: 50, color: Color.fromARGB(255, 240, 240, 240))
+                          style: TextStyle(fontSize: 45, color: Color.fromARGB(255, 240, 240, 240))
                           ), 
                         Text(
                           _response.name, 

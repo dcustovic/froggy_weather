@@ -1,7 +1,7 @@
 class Temperature {
   final num temp;
-  final double tempMin;
-  final double tempMax;
+  final num tempMin;
+  final num tempMax;
 
   const Temperature({this.temp, this.tempMin, this.tempMax});
 
